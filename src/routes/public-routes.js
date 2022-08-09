@@ -18,7 +18,7 @@ function PublicRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup/>} />
           <Route exact path="/" element={<PrivateRoute />}>
-            <Route exact path="/" element={<Dashboard />} />
+            <Route exact path="/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
       </div>

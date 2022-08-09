@@ -1,9 +1,11 @@
 import React from "react";
-import { useAuthState } from "../../contexts/auth/auth-context";
+import { useAuthStore } from "../../store/useAuthStore";
 import "./spinner.css";
 
+const statusSelector = (state) => state.status;
+
 function Spinner() {
-  const { status } = useAuthState();
+  const status = useAuthStore(statusSelector);
 
   if (status === "pending") {
     return (

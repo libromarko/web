@@ -1,23 +1,18 @@
 import React from "react";
-import { Route, Navigate } from "react-router-dom";
-
-import { useAuthState } from "../contexts/auth/auth-context";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuthStore } from "../store/useAuthStore";
+import { userSelector } from "../store/authStoreSelector";
 
 function PrivateRoute({ component: Component, ...rest }) {
-  const { user } = useAuthState();
+  const user = useAuthStore(userSelector);
 
-  return (
-      <Route
-        {...rest}
-        render={(props) =>
-          user ? (
-            <Component {...props} />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-  );
+  console.log('user', user);
+
+  if (!user) {
+    return <Navigate to={'/login'} replace />;
+  }
+
+  return <Outlet />;
 }
 
 export default PrivateRoute;

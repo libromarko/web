@@ -16,9 +16,9 @@ function PublicRoutes() {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup/>} />
-          <Route exact path="/" element={<PrivateRoute />}>
-            <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/home" exact element={<Dashboard />} />
           </Route>
         </Routes>
       </div>

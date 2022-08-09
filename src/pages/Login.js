@@ -1,10 +1,12 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuthState, useAuthDispatch, login } from "../contexts/auth/auth-context";
+import { useAuthStore } from "../store/useAuthStore";
+import shallow from "zustand/shallow";
+import { authStateSelector } from "../store/authStoreSelector";
 
 function Login() {
-  const { user: loggedUser, status, error } = useAuthState();
-  const dispatch = useAuthDispatch();
+  const authState = useAuthStore(authStateSelector, shallow);
+  const { user: loggedUser, status, error, login } = authState;
 
   const [user, setUser] = React.useState("");
   const inputRef = React.useRef(null);
@@ -15,11 +17,11 @@ function Login() {
     }
   }, []);
 
-  if (loggedUser) return <Navigate to="/" />;
+  if (loggedUser) return <Navigate to="/home" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(dispatch, user);
+    login(user);
     setUser("");
   };
 
@@ -27,6 +29,11 @@ function Login() {
 
   return (
     <div>
+      <ul>
+        <li>Usernames other than "foo" returns an error.</li>
+        <li>Each request takes 2 seconds and fires a spinner.</li>
+        <li>After successful login, page is redirected to "Dashboard"</li>
+      </ul>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name" />
@@ -41,7 +48,7 @@ function Login() {
             required
             autoComplete="off"
           />
-          <button type="submit">
+          <button className="login-button" type="submit">
             Login
           </button>
         </div>

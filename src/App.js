@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import routes from "./routes/routes";
+import AppBarComponent from "./components/AppBar";
 
 const LoginPage = lazy(() => import("./pages/Login"));
 const SignupPage = lazy(() => import("./pages/Signup"));
@@ -15,10 +16,11 @@ function App() {
     return state.auth;
   });
 
-  console.log('isAuthenticated:', isAuthenticated);
+  console.log("isAuthenticated:", isAuthenticated);
 
   return (
     <Router>
+      <AppBarComponent isAuthenticated={isAuthenticated} />
       <Suspense fallback={"loading..."}>
         <Routes>
           <Route

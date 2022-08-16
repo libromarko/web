@@ -10,11 +10,10 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../../store/services/auth.service';
 
 export default function Login() {
-  const { isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [data, setData] = useState({ email: "", password: "" });
   

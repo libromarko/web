@@ -13,12 +13,15 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/services/auth.service';
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const AppBarComponent = ({ isAuthenticated }) => {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -34,7 +37,15 @@ const AppBarComponent = ({ isAuthenticated }) => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (setting) => {
+    switch (setting) {
+      case 'Logout':
+        dispatch(logout());
+        break;
+    
+      default:
+        break;
+    }
     setAnchorElUser(null);
   };
 
@@ -137,7 +148,7 @@ const AppBarComponent = ({ isAuthenticated }) => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -157,7 +168,7 @@ const AppBarComponent = ({ isAuthenticated }) => {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting} onClick={() => handleCloseUserMenu(setting)}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}

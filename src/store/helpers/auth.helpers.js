@@ -5,8 +5,8 @@ function getAuthUser() {
   
   function authHeader() {
     const user = getAuthUser();
-    if (user && user.accessToken) {
-      return { 'Authorization': user.accessToken };
+    if (user && user.access_token) {
+      return { 'Authorization': user.access_token };
     } else {
       return {};
     }

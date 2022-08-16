@@ -5,6 +5,19 @@ import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import routes from "./routes/routes";
 import AppBarComponent from "./components/AppBar";
+import { brown } from '@mui/material/colors';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: brown[500],
+    },
+    secondary: {
+      main: brown[900],
+    }
+  },
+});
 
 const LoginPage = lazy(() => import("./pages/Login"));
 const SignupPage = lazy(() => import("./pages/Signup"));
@@ -19,6 +32,7 @@ function App() {
   console.log("isAuthenticated:", isAuthenticated);
 
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <AppBarComponent isAuthenticated={isAuthenticated} />
       <Suspense fallback={"loading..."}>
@@ -48,6 +62,7 @@ function App() {
         </Routes>
       </Suspense>
     </Router>
+    </ThemeProvider>
   );
 }
 

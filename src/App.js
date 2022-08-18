@@ -5,16 +5,16 @@ import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import routes from "./routes/routes";
 import AppBarComponent from "./components/AppBar";
-import { brown } from '@mui/material/colors';
+import { amber } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: brown[500],
+      main: amber[500],
     },
     secondary: {
-      main: brown[900],
+      main: amber[900],
     }
   },
 });

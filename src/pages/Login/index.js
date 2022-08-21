@@ -10,18 +10,17 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { useDispatch } from 'react-redux';
-import { login } from '../../store/services/auth.service';
+import { useDispatch } from "react-redux";
+import { login } from "../../store/services/auth.service";
 
 export default function Login() {
   const dispatch = useDispatch();
   const [data, setData] = useState({ email: "", password: "" });
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(login(data));
   };
-
 
   const handleChange = (e) => {
     setData((prevState) => ({
@@ -31,13 +30,14 @@ export default function Login() {
   };
 
   return (
-    <Container component="main" maxWidth="xs" style={{ height: '100vh'}}>
+    <Container maxWidth="xs">
       <Box
         sx={{
           marginTop: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          height: "100vh",
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>

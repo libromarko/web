@@ -23,7 +23,7 @@ export default function SignUp() {
   };
 
   return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" style={{ height: '100vh'}}>
         <Box
           sx={{
             marginTop: 8,
@@ -99,7 +99,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

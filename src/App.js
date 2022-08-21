@@ -1,21 +1,22 @@
 import React, { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { deepPurple } from "@mui/material/colors";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import routes from "./routes/routes";
 import AppBarComponent from "./components/AppBar";
-import { amber } from '@mui/material/colors';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import FooterComponent from "./components/Footer";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: amber[500],
+      main: deepPurple[500],
     },
     secondary: {
-      main: amber[900],
-    }
+      main: deepPurple[900],
+    },
   },
 });
 
@@ -33,35 +34,36 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-    <Router>
-      <AppBarComponent isAuthenticated={isAuthenticated} />
-      <Suspense fallback={"loading..."}>
-        <Routes>
-          <Route
-            path="/"
-            element={<PrivateRoute isAuthenticated={isAuthenticated} />}
-          >
-            {routes.map(({ component: Component, path, exact }) => (
-              <Route
-                path={`/${path}`}
-                key={path}
-                exact={exact}
-                element={<Component />}
-              />
-            ))}
-          </Route>
-          <Route
-            path="/"
-            element={<PublicRoute isAuthenticated={isAuthenticated} />}
-          >
-            <Route path="/landing" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
-    </Router>
+      <Router>
+        <AppBarComponent isAuthenticated={isAuthenticated} />
+        <Suspense fallback={"loading..."}>
+          <Routes>
+            <Route
+              path="/"
+              element={<PrivateRoute isAuthenticated={isAuthenticated} />}
+            >
+              {routes.map(({ component: Component, path, exact }) => (
+                <Route
+                  path={`/${path}`}
+                  key={path}
+                  exact={exact}
+                  element={<Component />}
+                />
+              ))}
+            </Route>
+            <Route
+              path="/"
+              element={<PublicRoute isAuthenticated={isAuthenticated} />}
+            >
+              <Route path="/landing" element={<LandingPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+        <FooterComponent />
+      </Router>
     </ThemeProvider>
   );
 }

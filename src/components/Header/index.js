@@ -8,7 +8,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const sequence = [" browser.", " mobile.", " anywhere."];
+const sequence = ["browser.", "mobile.", "anywhere."];
 
 export default function Header() {
   return (
@@ -26,12 +26,14 @@ export default function Header() {
             <Typography variant="h3" component="h3">
               Access your bookmarks from{" "}
               <span style={{ backgroundColor: "#9575cd", color: "white" }}>
+              &nbsp;
                 <Typed
                   strings={sequence}
                   typeSpeed={100}
                   backSpeed={50}
                   smartBackspace={true}
                 />
+                &nbsp;
               </span>
             </Typography>
           </Item>

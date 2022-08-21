@@ -21,10 +21,11 @@ const stores = [
 
 export default function Stores() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={4}>
+    <Box sx={{ flexGrow: 1 }} alignItems="center"
+    justifyContent="center" >
+      <Grid container spacing={2}>
         {stores.map((store) => (
-          <Grid item xs={4}>
+          <Grid item xs={12 / stores.length} style={{ textAlign: 'center'}}>
             <Link href={store.href}>
               <img
                 width={340}

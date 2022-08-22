@@ -34,7 +34,11 @@ export default function SignUp() {
       })
       .catch((e) => {
         console.log(e.response.data);
-        setError(e.response.data.message);
+        if (typeof error.response.data.message === "string") {
+          setError([e.response.data.message]);
+        } else {
+          setError(e.response.data.message);
+        }
       });
   };
 

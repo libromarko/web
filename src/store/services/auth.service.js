@@ -12,13 +12,25 @@ const loginStart = (dispatch) => {
   dispatch({ type: LOGIN_START });
 };
 
-const loginSuccess = (dispatch, response) => {
-  const user = {
-    access_token: response.access_token,
-  };
+const loginSuccess = async (dispatch, response) => {
+  try {
+    const userResponse = await axios.get(api + "user/me", {
+      headers: { Authorization: `Bearer ${response.access_token}` },
+    });
 
-  localStorage.setItem("libromarko", JSON.stringify(user));
-  dispatch({ type: LOGIN_SUCCESS, payload: user });
+    console.log("response", userResponse);
+
+    const user = {
+      access_token: response.access_token,
+      id: userResponse.data.id,
+      email: userResponse.data.email,
+    };
+    localStorage.setItem("libromarko", JSON.stringify(user));
+
+    dispatch({ type: LOGIN_SUCCESS, payload: user });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const loginFail = (dispatch, error) => {
@@ -35,8 +47,12 @@ export const login = (body) => (dispatch) => {
       loginSuccess(dispatch, response.data);
     })
     .catch(function (error) {
-      loginFail(dispatch, error.response.data.message);
       console.log(error.response.data.message);
+      if (typeof error.response.data.message === "string") {
+        loginFail(dispatch, [error.response.data.message]);
+      } else {
+        loginFail(dispatch, error.response.data.message);
+      }
     });
 };
 

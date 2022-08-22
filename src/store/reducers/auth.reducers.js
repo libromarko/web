@@ -1,11 +1,20 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { loginStart, loginSuccess, logout, loginFail } from '../actions';
-import { getAuthUser } from '../helpers';
-
+import { createReducer } from "@reduxjs/toolkit";
+import {
+  loginStart,
+  loginSuccess,
+  logout,
+  loginFail,
+} from "../actions";
+import { getAuthUser } from "../helpers";
 
 const authUser = getAuthUser();
 
-const initialState = { isAuthenticated: !!authUser, user: authUser, error: null, isLoading: false };
+const initialState = {
+  isAuthenticated: !!authUser,
+  user: authUser,
+  error: [],
+  isLoading: false,
+};
 
 export const authReducer = createReducer(initialState, (builder) => {
   builder
@@ -16,6 +25,7 @@ export const authReducer = createReducer(initialState, (builder) => {
       state.isAuthenticated = true;
       state.user = action.payload;
       state.isLoading = false;
+      state.error = [];
     })
     .addCase(loginFail, (state, action) => {
       state.isAuthenticated = false;

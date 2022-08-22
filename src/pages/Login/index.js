@@ -10,10 +10,16 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import FormHelperText from "@mui/material/FormHelperText";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/services/auth.service";
+import { useSelector } from "react-redux";
 
 export default function Login() {
+  const { error } = useSelector((state) => {
+    return state.auth;
+  });
+
   const dispatch = useDispatch();
   const [data, setData] = useState({ email: "", password: "" });
 
@@ -73,6 +79,12 @@ export default function Login() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
+          {error &&
+            error.map((e, i) => (
+              <FormHelperText key={i} error>
+                {e}
+              </FormHelperText>
+            ))}
           <Button
             type="submit"
             fullWidth

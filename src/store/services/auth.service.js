@@ -33,7 +33,7 @@ export const login = (body) => (dispatch) => {
       loginSuccess(dispatch, response.data);
     })
     .catch(function (error) {
-      loginFail(dispatch, error.response.data.message[0]);
+      loginFail(dispatch, error.response.data.message);
       console.log(error.response.data.message);
     });
 };

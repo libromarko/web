@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -10,15 +10,37 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import FormHelperText from "@mui/material/FormHelperText";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const [data, setData] = useState({ email: "", password: "" });
+  const [error, setError] = useState();
+  let navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+
+    axios
+      .post("http://localhost:3001/auth/signup", data)
+      .then(function (response) {
+        console.log(response);
+        if (response.data.signup_success) {
+          return navigate("/login");
+        }
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+        setError(e.response.data.message);
+      });
+  };
+
+  const handleChange = (e) => {
+    setData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   return (
@@ -48,6 +70,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -59,6 +82,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="new-password"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -68,6 +92,12 @@ export default function SignUp() {
               />
             </Grid>
           </Grid>
+          {error &&
+            error.map((e, i) => (
+              <FormHelperText key={i} error>
+                {e}
+              </FormHelperText>
+            ))}
           <Button
             type="submit"
             fullWidth

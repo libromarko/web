@@ -14,6 +14,8 @@ import FormHelperText from "@mui/material/FormHelperText";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const api = process.env.REACT_APP_API_URL;
+
 export default function SignUp() {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState();
@@ -23,7 +25,7 @@ export default function SignUp() {
     event.preventDefault();
 
     axios
-      .post("http://localhost:3001/auth/signup", data)
+      .post(api + "auth/signup", data)
       .then(function (response) {
         console.log(response);
         if (response.data.signup_success) {

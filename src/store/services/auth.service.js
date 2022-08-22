@@ -6,6 +6,8 @@ import {
 } from "../constants/auth.constants";
 import axios from "axios";
 
+const api = process.env.REACT_APP_API_URL;
+
 const loginStart = (dispatch) => {
   dispatch({ type: LOGIN_START });
 };
@@ -27,7 +29,7 @@ export const login = (body) => (dispatch) => {
   loginStart(dispatch);
 
   axios
-    .post("http://localhost:3001/auth/signin", body)
+    .post(api + "auth/signin", body)
     .then(function (response) {
       console.log(response.data);
       loginSuccess(dispatch, response.data);

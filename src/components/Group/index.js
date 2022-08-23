@@ -16,6 +16,7 @@ import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useApi } from "../../hooks/useApi";
+import ListItemLoader from '../Loader/ListItemLoader';
 
 export default function Group() {
   const { get } = useApi();
@@ -35,7 +36,7 @@ export default function Group() {
 
   return (
     <List subheader={<ListSubheader>Groups</ListSubheader>}>
-      {!isLoading &&
+      {!isLoading ?
         groups.map((group) => (
           <ListItem
             key={group.id}
@@ -44,7 +45,7 @@ export default function Group() {
                 <IconButton aria-label="settings">
                   <SettingsIcon />
                 </IconButton>
-                <IconButton edge="end" aria-label="open">
+                <IconButton aria-label="open">
                   <ArrowForwardIosIcon />
                 </IconButton>
               </>
@@ -60,7 +61,7 @@ export default function Group() {
               secondary={new Date(group.updatedAt).toLocaleString()}
             />
           </ListItem>
-        ))}
+        )) : <ListItemLoader />}
       <Divider />
       <ListItemButton onClick={(event) => console.log("add new")}>
         <ListItemIcon>

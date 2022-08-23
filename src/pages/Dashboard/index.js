@@ -1,21 +1,17 @@
 import React from "react";
-import { Typography, Container, Box } from "@mui/material";
+import { Grid, Container, Box } from "@mui/material";
+import Group from "../../components/Group";
 
 export default function Dashboard() {
   return (
-    <Container maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <Typography variant="h1" component="h1">
-          h1. Dashboard
-        </Typography>
+    <Container maxWidth="xl" style={{ height: "100vh" }}>
+      <Box sx={{ flexGrow: 1, mt: 10, mb: 10 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={4}>
+            <Group />
+          </Grid>
+          <Grid item xs={8}></Grid>
+        </Grid>
       </Box>
     </Container>
   );

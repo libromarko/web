@@ -11,12 +11,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import FormHelperText from "@mui/material/FormHelperText";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-const api = process.env.REACT_APP_API_URL;
+import { useApi } from "../../hooks/useApi";
 
 export default function SignUp() {
+  const { post } = useApi();
+
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState();
   let navigate = useNavigate();
@@ -24,20 +24,17 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios
-      .post(api + "auth/signup", data)
-      .then(function (response) {
-        console.log(response);
-        if (response.data.signup_success) {
-          return navigate("/login");
+    post("auth/signup", data)
+      .then((response) => {
+        if ( response.statusCode === 403 || response.statusCode === 400) {
+          if (typeof response.message === "string") {
+            setError([response.message]);
+          } else {
+            setError(response.message);
+          }
         }
-      })
-      .catch((e) => {
-        console.log(e.response.data);
-        if (typeof error.response.data.message === "string") {
-          setError([e.response.data.message]);
-        } else {
-          setError(e.response.data.message);
+        if (response.signup_success) {
+          return navigate("/login");
         }
       });
   };

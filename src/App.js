@@ -38,6 +38,15 @@ function App() {
         <AppBarComponent isAuthenticated={isAuthenticated} />
         <Suspense fallback={"loading..."}>
           <Routes>
+            
+            <Route
+              path="/"
+              element={<PublicRoute isAuthenticated={isAuthenticated} />}
+            >
+              <Route path="/landing" element={<LandingPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+            </Route>
             <Route
               path="/"
               element={<PrivateRoute isAuthenticated={isAuthenticated} />}
@@ -50,14 +59,6 @@ function App() {
                   element={<Component />}
                 />
               ))}
-            </Route>
-            <Route
-              path="/"
-              element={<PublicRoute isAuthenticated={isAuthenticated} />}
-            >
-              <Route path="/landing" element={<LandingPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/signup" element={<SignupPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

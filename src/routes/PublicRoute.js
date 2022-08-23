@@ -7,7 +7,7 @@ function PublicRoute({ isAuthenticated }) {
   ) : (
     <Navigate
       to={{
-        pathname: '/',
+        pathname: '/dashboard',
         state: { from: window.location },
       }}
     />

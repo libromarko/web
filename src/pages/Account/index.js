@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Container, Box } from "@mui/material";
 
-export default function Dashboard() {
+export default function Account() {
   return (
     <Container maxWidth="xs">
       <Box
@@ -14,7 +14,7 @@ export default function Dashboard() {
         }}
       >
         <Typography variant="h1" component="h1">
-          h1. Dashboard
+          h1. Account
         </Typography>
       </Box>
     </Container>

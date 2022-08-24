@@ -16,10 +16,11 @@ import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useApi } from "../../hooks/useApi";
-import ListItemLoader from '../Loader/ListItemLoader';
+import ListItemLoader from "../Loader/ListItemLoader";
 
-export default function Group() {
+export default function Group({ selectedGroup, setSelectedGroup }) {
   const { get } = useApi();
+
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -34,9 +35,24 @@ export default function Group() {
     });
   };
 
+  const handleSelectedGroup = (group) => {
+    if (group.id === selectedGroup?.id) {
+      setSelectedGroup(null);
+    } else {
+      setSelectedGroup(group);
+    }
+  };
+
   return (
     <List subheader={<ListSubheader>Groups</ListSubheader>}>
-      {!isLoading ?
+      <ListItemButton onClick={(event) => console.log("add new")}>
+        <ListItemIcon>
+          <CreateNewFolderIcon />
+        </ListItemIcon>
+        <ListItemText primary="New Group" />
+      </ListItemButton>
+      <Divider />
+      {!isLoading ? (
         groups.map((group) => (
           <ListItem
             key={group.id}
@@ -45,7 +61,17 @@ export default function Group() {
                 <IconButton aria-label="settings">
                   <SettingsIcon />
                 </IconButton>
-                <IconButton aria-label="open">
+                <IconButton
+                  style={{
+                    transform:
+                      selectedGroup?.id === group.id
+                        ? `rotate(-180deg)`
+                        : "rotate(0deg)",
+                    transition: "all .5s ease-in-out",
+                  }}
+                  aria-label="open"
+                  onClick={() => handleSelectedGroup(group)}
+                >
                   <ArrowForwardIosIcon />
                 </IconButton>
               </>
@@ -61,14 +87,10 @@ export default function Group() {
               secondary={new Date(group.updatedAt).toLocaleString()}
             />
           </ListItem>
-        )) : <ListItemLoader />}
-      <Divider />
-      <ListItemButton onClick={(event) => console.log("add new")}>
-        <ListItemIcon>
-          <CreateNewFolderIcon />
-        </ListItemIcon>
-        <ListItemText primary="Add New Group" />
-      </ListItemButton>
+        ))
+      ) : (
+        <ListItemLoader />
+      )}
     </List>
   );
 }

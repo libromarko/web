@@ -18,7 +18,12 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { useApi } from "../../hooks/useApi";
 import ListItemLoader from "../Loader/ListItemLoader";
 
-export default function Group({ selectedGroup, setSelectedGroup }) {
+export default function Group({
+  selectedGroup,
+  setSelectedGroup,
+  setOpenEditGroupSection,
+  updatedGroups
+}) {
   const { get } = useApi();
 
   const [groups, setGroups] = useState([]);
@@ -26,7 +31,7 @@ export default function Group({ selectedGroup, setSelectedGroup }) {
 
   useEffect(() => {
     fetchGroups();
-  }, []);
+  }, [updatedGroups]);
 
   const fetchGroups = () => {
     get("group/user").then((response) => {
@@ -45,7 +50,14 @@ export default function Group({ selectedGroup, setSelectedGroup }) {
 
   return (
     <List subheader={<ListSubheader>Groups</ListSubheader>}>
-      <ListItemButton onClick={(event) => console.log("add new")}>
+      <ListItemButton
+        onClick={() =>
+          setOpenEditGroupSection((prevState) => ({
+            group: null,
+            isOpen: true,
+          }))
+        }
+      >
         <ListItemIcon>
           <CreateNewFolderIcon />
         </ListItemIcon>
@@ -58,7 +70,16 @@ export default function Group({ selectedGroup, setSelectedGroup }) {
             key={group.id}
             secondaryAction={
               <>
-                <IconButton aria-label="settings">
+                <IconButton
+                  aria-label="settings"
+                  onClick={() =>
+                    setOpenEditGroupSection((prevState) => ({
+                      ...prevState,
+                      group: group,
+                      isOpen: true,
+                    }))
+                  }
+                >
                   <SettingsIcon />
                 </IconButton>
                 <IconButton

@@ -60,7 +60,7 @@ export const useApi = (token) => {
     const url = `${endpoint}${id ? `/${id}` : ""}`;
     return customFetch({
       endpoint: url,
-      method: "PUT",
+      method: "PATCH",
       body,
       headers: defaultHeader,
     });

@@ -3,16 +3,23 @@ import { Grid, Container, Box } from "@mui/material";
 import Group from "../../components/Group";
 import Bookmark from "../../components/Bookmark";
 import EditGroup from "../../components/EditGroup";
+import EditBookmark from "../../components/EditBookmark";
 
 export default function Dashboard() {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [updatedGroups, setUpdatedGroups] = useState(false);
+  const [updatedBookmarks, setUpdatedBookmarks] = useState(false);
   const [openEditGroupSection, setOpenEditGroupSection] = useState({
     isOpen: false,
     group: null,
   });
+  const [openEditBookmarkSection, setOpenEditBookmarkSection] = useState({
+    isOpen: false,
+    bookmark: null,
+  });
 
-  console.log('openEditGroupSection', openEditGroupSection);
+  console.log("bookmark", openEditBookmarkSection);
+  console.log("group", openEditGroupSection);
 
   return (
     <Container maxWidth="xl" style={{ height: "100vh" }}>
@@ -34,7 +41,22 @@ export default function Dashboard() {
             />
           </Grid>
           <Grid item xs={4}>
-            {selectedGroup ? <Bookmark selectedGroup={selectedGroup} /> : null}
+            {selectedGroup ? (
+              <>
+                {openEditBookmarkSection.isOpen ? (
+                  <EditBookmark
+                    openEditBookmarkSection={openEditBookmarkSection}
+                    setOpenEditBookmarkSection={setOpenEditBookmarkSection}
+                    setUpdatedBookmarks={setUpdatedBookmarks}
+                  />
+                ) : null}
+                <Bookmark
+                  selectedGroup={selectedGroup}
+                  setOpenEditBookmarkSection={setOpenEditBookmarkSection}
+                  updatedBookmarks={updatedBookmarks}
+                />
+              </>
+            ) : null}
           </Grid>
           <Grid item xs={4}></Grid>
         </Grid>

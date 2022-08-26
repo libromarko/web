@@ -19,7 +19,11 @@ import { useApi } from "../../hooks/useApi";
 
 import ListItemLoader from "../Loader/ListItemLoader";
 
-export default function Bookmark({ selectedGroup }) {
+export default function Bookmark({
+  selectedGroup,
+  setOpenEditBookmarkSection,
+  updatedBookmarks,
+}) {
   const { get } = useApi();
 
   const [bookmarks, setBookmarks] = useState([]);
@@ -27,7 +31,7 @@ export default function Bookmark({ selectedGroup }) {
 
   useEffect(() => {
     fetchBookmarks();
-  }, []);
+  }, [updatedBookmarks]);
 
   const fetchBookmarks = () => {
     if (selectedGroup) {
@@ -40,7 +44,14 @@ export default function Bookmark({ selectedGroup }) {
 
   return (
     <List subheader={<ListSubheader>{selectedGroup.name}</ListSubheader>}>
-      <ListItemButton onClick={(event) => console.log("add new")}>
+      <ListItemButton
+        onClick={() =>
+          setOpenEditBookmarkSection({
+            bookmark: null,
+            isOpen: true,
+          })
+        }
+      >
         <ListItemIcon>
           <AddLinkIcon />
         </ListItemIcon>
@@ -52,7 +63,15 @@ export default function Bookmark({ selectedGroup }) {
           <ListItem
             key={bookmark.id}
             secondaryAction={
-              <IconButton aria-label="settings">
+              <IconButton
+                aria-label="settings"
+                onClick={() =>
+                  setOpenEditBookmarkSection({
+                    bookmark: bookmark,
+                    isOpen: true,
+                  })
+                }
+              >
                 <SettingsIcon />
               </IconButton>
             }

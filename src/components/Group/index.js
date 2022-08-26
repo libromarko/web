@@ -22,7 +22,7 @@ export default function Group({
   selectedGroup,
   setSelectedGroup,
   setOpenEditGroupSection,
-  updatedGroups
+  updatedGroups,
 }) {
   const { get } = useApi();
 
@@ -52,7 +52,7 @@ export default function Group({
     <List subheader={<ListSubheader>Groups</ListSubheader>}>
       <ListItemButton
         onClick={() =>
-          setOpenEditGroupSection((prevState) => ({
+          setOpenEditGroupSection(() => ({
             group: null,
             isOpen: true,
           }))
@@ -73,11 +73,10 @@ export default function Group({
                 <IconButton
                   aria-label="settings"
                   onClick={() =>
-                    setOpenEditGroupSection((prevState) => ({
-                      ...prevState,
+                    setOpenEditGroupSection({
                       group: group,
                       isOpen: true,
-                    }))
+                    })
                   }
                 >
                   <SettingsIcon />

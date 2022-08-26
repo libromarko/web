@@ -25,7 +25,7 @@ export default function Dashboard() {
     <Container maxWidth="xl" style={{ height: "100vh" }}>
       <Box sx={{ flexGrow: 1, mt: 10, mb: 10 }}>
         <Grid container spacing={2}>
-          <Grid item xs={4}>
+          <Grid item xs={6}>
             {openEditGroupSection.isOpen && (
               <EditGroup
                 openEditGroupSection={openEditGroupSection}
@@ -40,7 +40,7 @@ export default function Dashboard() {
               updatedGroups={updatedGroups}
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={6}>
             {selectedGroup ? (
               <>
                 {openEditBookmarkSection.isOpen ? (
@@ -58,7 +58,6 @@ export default function Dashboard() {
               </>
             ) : null}
           </Grid>
-          <Grid item xs={4}></Grid>
         </Grid>
       </Box>
     </Container>

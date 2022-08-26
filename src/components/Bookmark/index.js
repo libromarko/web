@@ -31,7 +31,7 @@ export default function Bookmark({
 
   useEffect(() => {
     fetchBookmarks();
-  }, [updatedBookmarks]);
+  }, [updatedBookmarks, selectedGroup]);
 
   const fetchBookmarks = () => {
     if (selectedGroup) {

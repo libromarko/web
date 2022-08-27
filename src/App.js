@@ -42,7 +42,7 @@ function App() {
               path="/"
               element={<PublicRoute isAuthenticated={isAuthenticated} />}
             >
-              <Route path="/landing" element={<LandingPage />} />
+              <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
             </Route>

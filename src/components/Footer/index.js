@@ -26,6 +26,8 @@ export default function Footer({ props }) {
             libromarko
           </Link>{" "}
           {new Date().getFullYear()}
+          {" - v: "}
+          {process.env.REACT_APP_VERSION}
         </Typography>
       </Grid>
       <Grid item xs={4}>

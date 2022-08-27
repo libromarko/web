@@ -42,9 +42,11 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
         dispatch(logout());
         break;
       case "Account":
-        return navigate("/account", { replace: true });
+        navigate("/account", { replace: true });
+        break;
       case "Dashboard":
-        return navigate("/dashboard", { replace: true });
+        navigate("/dashboard", { replace: true });
+        break;
       default:
         break;
     }

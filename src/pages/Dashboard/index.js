@@ -18,9 +18,6 @@ export default function Dashboard() {
     bookmark: null,
   });
 
-  console.log("bookmark", openEditBookmarkSection);
-  console.log("group", openEditGroupSection);
-
   return (
     <Container maxWidth="xl" style={{ height: "100vh" }}>
       <Box sx={{ flexGrow: 1, mt: 10, mb: 10 }}>

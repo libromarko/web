@@ -26,7 +26,7 @@ const LandingPage = lazy(() => import("./pages/Landing"));
 const NotFoundPage = lazy(() => import("./pages/NotFound"));
 
 function App() {
-  const { isAuthenticated } = useSelector((state) => {
+  const { isAuthenticated, user } = useSelector((state) => {
     return state.auth;
   });
 
@@ -35,10 +35,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <AppBarComponent isAuthenticated={isAuthenticated} />
+        <AppBarComponent isAuthenticated={isAuthenticated} user={user} />
         <Suspense fallback={"loading..."}>
           <Routes>
-            
             <Route
               path="/"
               element={<PublicRoute isAuthenticated={isAuthenticated} />}
@@ -56,7 +55,7 @@ function App() {
                   path={`/${path}`}
                   key={path}
                   exact={exact}
-                  element={<Component />}
+                  element={<Component user={user} />}
                 />
               ))}
             </Route>

@@ -7,19 +7,18 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { logout } from '../../store/services/auth.service';
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/services/auth.service";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["Blog"];
+const settings = ["Account", "Dashboard", "Logout"];
 
-const AppBarComponent = ({ isAuthenticated }) => {
+const AppBarComponent = ({ isAuthenticated, user }) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -39,10 +38,13 @@ const AppBarComponent = ({ isAuthenticated }) => {
 
   const handleCloseUserMenu = (setting) => {
     switch (setting) {
-      case 'Logout':
+      case "Logout":
         dispatch(logout());
         break;
-    
+      case "Account":
+        return navigate("/account", { replace: true });
+      case "Dashboard":
+        return navigate("/dashboard", { replace: true });
       default:
         break;
     }
@@ -147,7 +149,7 @@ const AppBarComponent = ({ isAuthenticated }) => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar />
+                  {user.email}
                 </IconButton>
               </Tooltip>
               <Menu
@@ -167,7 +169,10 @@ const AppBarComponent = ({ isAuthenticated }) => {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={() => handleCloseUserMenu(setting)}>
+                  <MenuItem
+                    key={setting}
+                    onClick={() => handleCloseUserMenu(setting)}
+                  >
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}

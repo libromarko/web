@@ -10,7 +10,6 @@ export default function Account({ user }) {
 
   const handleDeleteAccount = () => {
     del("user", user.id).then((response) => {
-      console.log("response", response);
       if (response.id) {
         dispatch(logout());
       }

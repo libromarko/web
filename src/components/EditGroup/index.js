@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Input, Button, Box, Grid, IconButton } from "@mui/material";
+import {
+  Input,
+  Button,
+  Box,
+  Grid,
+  IconButton,
+  FormHelperText,
+} from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -12,6 +19,7 @@ export default function EditGroup({
 }) {
   const { post, put, del } = useApi();
   const [name, setName] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setName(
@@ -26,15 +34,26 @@ export default function EditGroup({
           if (response.id) {
             setOpenEditGroupSection({ group: null, isOpen: false });
             setUpdatedGroups((prev) => !prev);
+          } else {
+            if (typeof response.message === "string") {
+              setError([response.message]);
+            } else {
+              setError(response.message);
+            }
           }
         }
       );
     } else {
       post("group", { name: name }).then((response) => {
-        console.log("response", response);
         if (response.id) {
           setOpenEditGroupSection({ group: null, isOpen: false });
           setUpdatedGroups((prev) => !prev);
+        } else {
+          if (typeof response.message === "string") {
+            setError([response.message]);
+          } else {
+            setError(response.message);
+          }
         }
       });
     }
@@ -52,6 +71,14 @@ export default function EditGroup({
   return (
     <Box sx={{ flexGrow: 1, textAlign: "center" }}>
       <Grid container spacing={2}>
+        <Grid item xs={12}>
+          {error &&
+            error.map((e, i) => (
+              <FormHelperText key={i} error>
+                {e}
+              </FormHelperText>
+            ))}
+        </Grid>
         <Grid item xs={6}>
           <Input
             placeholder="Group Name"

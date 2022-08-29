@@ -30,8 +30,6 @@ function App() {
     return state.auth;
   });
 
-  console.log("isAuthenticated:", isAuthenticated);
-
   return (
     <ThemeProvider theme={theme}>
       <Router>

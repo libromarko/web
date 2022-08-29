@@ -18,8 +18,6 @@ const loginSuccess = async (dispatch, response) => {
       headers: { Authorization: `Bearer ${response.access_token}` },
     });
 
-    console.log("response", userResponse);
-
     const user = {
       access_token: response.access_token,
       id: userResponse.data.id,
@@ -43,11 +41,9 @@ export const login = (body) => (dispatch) => {
   axios
     .post(api + "auth/signin", body)
     .then(function (response) {
-      console.log(response.data);
       loginSuccess(dispatch, response.data);
     })
     .catch(function (error) {
-      console.log(error.response.data.message);
       if (typeof error.response.data.message === "string") {
         loginFail(dispatch, [error.response.data.message]);
       } else {

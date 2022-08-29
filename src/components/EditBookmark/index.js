@@ -9,6 +9,7 @@ import {
   Select,
   MenuItem,
   Button,
+  FormHelperText,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -27,6 +28,7 @@ export default function EditBookmark({
   const [group, setGroup] = useState("");
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (openEditBookmarkSection.bookmark) {
@@ -57,15 +59,26 @@ export default function EditBookmark({
           if (response.id) {
             setOpenEditBookmarkSection({ bookmark: null, isOpen: false });
             setUpdatedBookmarks((prev) => !prev);
+          } else {
+            if (typeof response.message === "string") {
+              setError([response.message]);
+            } else {
+              setError(response.message);
+            }
           }
         }
       );
     } else {
       post("bookmark", body).then((response) => {
-        console.log("response", response);
         if (response.id) {
           setOpenEditBookmarkSection({ bookmark: null, isOpen: false });
           setUpdatedBookmarks((prev) => !prev);
+        } else {
+          if (typeof response.message === "string") {
+            setError([response.message]);
+          } else {
+            setError(response.message);
+          }
         }
       });
     }
@@ -83,6 +96,14 @@ export default function EditBookmark({
   return (
     <Box sx={{ flexGrow: 1, textAlign: "center" }}>
       <Grid container spacing={2}>
+        <Grid item xs={12}>
+          {error &&
+            error.map((e, i) => (
+              <FormHelperText key={i} error>
+                {e}
+              </FormHelperText>
+            ))}
+        </Grid>
         <Grid item xs={6}>
           <Input
             placeholder="Bookmark Description"

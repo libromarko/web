@@ -24,6 +24,7 @@ const LoginPage = lazy(() => import("./pages/Login"));
 const SignupPage = lazy(() => import("./pages/Signup"));
 const LandingPage = lazy(() => import("./pages/Landing"));
 const NotFoundPage = lazy(() => import("./pages/NotFound"));
+const NewsPage = lazy(() => import("./pages/News"));
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => {
@@ -43,6 +44,7 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/news" element={<NewsPage />} />
             </Route>
             <Route
               path="/"

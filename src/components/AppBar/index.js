@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/services/auth.service";
 
-const pages = ["Blog"];
+const pages = ["News"];
 const settings = ["Account", "Dashboard", "Logout"];
 
 const AppBarComponent = ({ isAuthenticated, user }) => {
@@ -32,7 +32,15 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (page) => {
+    switch (page) {
+      case "News":
+        navigate("/news", { replace: true });
+        break;
+
+      default:
+        break;
+    }
     setAnchorElNav(null);
   };
 
@@ -110,7 +118,7 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
             >
               {!isAuthenticated &&
                 pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
@@ -140,7 +148,7 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
               pages.map((page) => (
                 <Button
                   key={page}
-                  onClick={handleCloseNavMenu}
+                  onClick={() => handleCloseNavMenu(page)}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
                   {page}

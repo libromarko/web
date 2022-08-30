@@ -17,7 +17,7 @@ const featuredPost = {
 export default function Landing() {
   return (
     <Container maxWidth={"xl"}>
-      <Box sx={{ height: "100vh" }}>
+      <Box sx={{ minHeight: '100vh' }}>
         <HeaderComponent />
         <StoresComponent />
         <FeaturedPost post={featuredPost} />

@@ -17,7 +17,7 @@ export default function Account({ user }) {
   };
 
   return (
-    <Container maxWidth="xl" style={{ height: "100vh" }}>
+    <Container maxWidth="xl" style={{ minHeight: "100vh" }}>
       <Box
         sx={{
           marginTop: 8,

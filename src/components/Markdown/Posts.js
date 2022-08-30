@@ -18,13 +18,13 @@ function Posts(props) {
         },
       }}
     >
-      <Typography variant="h6" textAlign={'center'}>
+      <Typography variant="h6" textAlign={"center"}>
         {title}
       </Typography>
       <Divider />
       {posts.map((post) => (
-        <Markdown className="markdown" key={post.substring(0, 40)}>
-          {post}
+        <Markdown className="markdown" key={post.id}>
+          {post.md}
         </Markdown>
       ))}
     </Grid>

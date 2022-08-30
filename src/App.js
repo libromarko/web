@@ -8,6 +8,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import routes from "./routes/routes";
 import AppBarComponent from "./components/AppBar";
 import FooterComponent from "./components/Footer";
+import NewsItem from "./pages/NewsItem";
 
 const theme = createTheme({
   palette: {
@@ -25,6 +26,7 @@ const SignupPage = lazy(() => import("./pages/Signup"));
 const LandingPage = lazy(() => import("./pages/Landing"));
 const NotFoundPage = lazy(() => import("./pages/NotFound"));
 const NewsPage = lazy(() => import("./pages/News"));
+const NewsItemPage = lazy(() => import("./pages/NewsItem"));
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => {
@@ -45,6 +47,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/news" element={<NewsPage />} />
+              <Route path="/news/:newsId" element={<NewsItemPage />} />
             </Route>
             <Route
               path="/"

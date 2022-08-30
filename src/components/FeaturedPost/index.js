@@ -61,7 +61,7 @@ function FeaturedPost(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <Link style={{ color: 'whitesmoke', fontWeight: 'bold'}} variant="subtitle1" href="#">
+            <Link style={{ color: 'whitesmoke', fontWeight: 'bold'}} variant="subtitle1" href="/news/1">
               {post.linkText}
             </Link>
           </Box>

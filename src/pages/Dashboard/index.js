@@ -19,7 +19,7 @@ export default function Dashboard() {
   });
 
   return (
-    <Container maxWidth="xl" style={{ height: "100vh" }}>
+    <Container maxWidth="xl" style={{ minHeight: "100vh" }}>
       <Box sx={{ flexGrow: 1, mt: 10, mb: 10 }}>
         <Grid container spacing={2}>
           <Grid item xs={6}>

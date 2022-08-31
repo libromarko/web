@@ -16,6 +16,7 @@ export default function EditGroup({
   openEditGroupSection,
   setOpenEditGroupSection,
   setUpdatedGroups,
+  setSelectedGroup
 }) {
   const { post, put, del } = useApi();
   const [name, setName] = useState("");
@@ -64,6 +65,7 @@ export default function EditGroup({
       if (response.id) {
         setOpenEditGroupSection({ group: null, isOpen: false });
         setUpdatedGroups((prev) => !prev);
+        setSelectedGroup(null);
       }
     });
   };

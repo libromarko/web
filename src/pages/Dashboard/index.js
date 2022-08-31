@@ -28,6 +28,7 @@ export default function Dashboard() {
                 openEditGroupSection={openEditGroupSection}
                 setOpenEditGroupSection={setOpenEditGroupSection}
                 setUpdatedGroups={setUpdatedGroups}
+                setSelectedGroup={setSelectedGroup}
               />
             )}
             <Group

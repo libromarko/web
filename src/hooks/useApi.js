@@ -1,9 +1,13 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { logout } from "../store/services/auth.service";
 import { authHeader } from "../store/helpers";
 
 const baseUrl = process.env.REACT_APP_API_URL;
 
 export const useApi = (token) => {
+  const dispatch = useDispatch();
+
   const auth = authHeader();
   const defaultHeader = {
     Accept: "application/json",
@@ -29,8 +33,15 @@ export const useApi = (token) => {
     }
 
     return axios(url, options)
-      .then((response) => response.data)
+      .then((response) => {
+        console.log("custom fetch", response.data);
+        return response.data;
+      })
       .catch((error) => {
+        if (error?.response?.data.statusCode === 401) {
+          dispatch(logout());
+        }
+
         return error?.response?.data || { status: false };
       });
   };

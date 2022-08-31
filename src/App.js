@@ -8,7 +8,6 @@ import PrivateRoute from "./routes/PrivateRoute";
 import routes from "./routes/routes";
 import AppBarComponent from "./components/AppBar";
 import FooterComponent from "./components/Footer";
-import NewsItem from "./pages/NewsItem";
 
 const theme = createTheme({
   palette: {

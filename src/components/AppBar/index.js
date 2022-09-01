@@ -14,6 +14,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/services/auth.service";
+import logo from "./logo.png";
 
 const pages = ["News"];
 const settings = ["Account", "Dashboard", "Logout"];
@@ -69,6 +70,15 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <img
+            src={logo}
+            alt="libromarko"
+            style={{
+              maxWidth: "80px",
+
+              marginRight: "10px",
+            }}
+          />
           <Typography
             variant="h6"
             noWrap

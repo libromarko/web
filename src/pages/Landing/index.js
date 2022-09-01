@@ -22,7 +22,12 @@ export default function Landing() {
       <Box sx={{ minHeight: "100vh" }}>
         <HeaderComponent />
         <StoresComponent />
-        <Typography variant="h6" gutterBottom style={{ marginTop: 50 }}>
+        <Typography
+          variant="h6"
+          component="h6"
+          gutterBottom
+          style={{ marginTop: 50 }}
+        >
           Featured Post
         </Typography>
         <Divider />

@@ -7,11 +7,11 @@ const stores = [
     href: "#",
     imagePath: "/stores/webstore-chrome.png",
   },
-  {
-    name: "Play Store",
-    href: "#",
-    imagePath: "/stores/google-play.svg",
-  },
+//  {
+//    name: "Play Store",
+//    href: "#",
+//    imagePath: "/stores/google-play.svg",
+//  },
   {
     name: "Firefox Add-ons",
     href: "#",

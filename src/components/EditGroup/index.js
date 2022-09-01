@@ -6,6 +6,8 @@ import {
   Grid,
   IconButton,
   FormHelperText,
+  Switch,
+  FormControlLabel,
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import CloseIcon from "@mui/icons-material/Close";
@@ -16,21 +18,23 @@ export default function EditGroup({
   openEditGroupSection,
   setOpenEditGroupSection,
   setUpdatedGroups,
-  setSelectedGroup
+  setSelectedGroup,
 }) {
   const { post, put, del } = useApi();
   const [name, setName] = useState("");
+  const [isPublic, setIsPublic] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setName(
       openEditGroupSection.group?.name ? openEditGroupSection.group?.name : ""
     );
+    setIsPublic(openEditGroupSection.group?.public ? true : false);
   }, [openEditGroupSection.group]);
 
   const handleSave = () => {
     if (openEditGroupSection.group) {
-      put(`group`, openEditGroupSection.group.id, { name: name }).then(
+      put(`group`, openEditGroupSection.group.id, { name: name, public: isPublic }).then(
         (response) => {
           if (response.id) {
             setOpenEditGroupSection({ group: null, isOpen: false });
@@ -45,7 +49,7 @@ export default function EditGroup({
         }
       );
     } else {
-      post("group", { name: name }).then((response) => {
+      post("group", { name: name, public: isPublic  }).then((response) => {
         if (response.id) {
           setOpenEditGroupSection({ group: null, isOpen: false });
           setUpdatedGroups((prev) => !prev);
@@ -120,6 +124,12 @@ export default function EditGroup({
           >
             <CloseIcon />
           </IconButton>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={<Switch checked={isPublic} onChange={() => setIsPublic(!isPublic)} />}
+            label={isPublic ? "Public" : "Private"}
+          />
         </Grid>
       </Grid>
     </Box>

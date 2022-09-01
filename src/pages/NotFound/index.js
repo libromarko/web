@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 
 export default function NotFound() {
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" style={{ minHeight: '100vh'}}>
       <Box
         sx={{
           marginTop: 8,

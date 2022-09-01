@@ -22,6 +22,10 @@ export default function Footer({ props }) {
             {...props}
           >
             {"No bullshit 💩"}
+            {" - "}
+            <Link color="inherit" href="/privacy-policy">
+              Privacy Policy
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={4}>

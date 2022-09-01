@@ -28,6 +28,7 @@ const NotFoundPage = lazy(() => import("./pages/NotFound"));
 const NewsPage = lazy(() => import("./pages/News"));
 const NewsItemPage = lazy(() => import("./pages/NewsItem"));
 const SharedGroupPage = lazy(() => import("./pages/SharedGroup"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicy"));
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => {
@@ -41,6 +42,7 @@ function App() {
         <Suspense fallback={"loading..."}>
           <Routes>
             <Route path="/shared/:id" element={<SharedGroupPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route
               path="/"
               element={<PublicRoute isAuthenticated={isAuthenticated} />}

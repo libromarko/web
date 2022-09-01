@@ -8,10 +8,16 @@ import {
   FormHelperText,
   Switch,
   FormControlLabel,
+  Paper,
+  InputBase,
+  Tooltip,
+  ClickAwayListener,
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
+import LinkIcon from "@mui/icons-material/Link";
+import ContentPasteIcon from "@mui/icons-material/ContentPaste";
 import { useApi } from "../../hooks/useApi";
 
 export default function EditGroup({
@@ -21,9 +27,29 @@ export default function EditGroup({
   setSelectedGroup,
 }) {
   const { post, put, del } = useApi();
+
   const [name, setName] = useState("");
   const [isPublic, setIsPublic] = useState(false);
+  const [open, setOpen] = useState(false);
   const [error, setError] = useState(null);
+
+  const copyToClipboard = async () => {
+    if ("clipboard" in navigator) {
+      await navigator.clipboard.writeText(
+        window.location.href.replace("dashboard", "shared/") +
+          openEditGroupSection.group.id
+      );
+    }
+    handleTooltipOpen(true);
+  };
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  };
 
   useEffect(() => {
     setName(
@@ -34,22 +60,23 @@ export default function EditGroup({
 
   const handleSave = () => {
     if (openEditGroupSection.group) {
-      put(`group`, openEditGroupSection.group.id, { name: name, public: isPublic }).then(
-        (response) => {
-          if (response.id) {
-            setOpenEditGroupSection({ group: null, isOpen: false });
-            setUpdatedGroups((prev) => !prev);
+      put(`group`, openEditGroupSection.group.id, {
+        name: name,
+        public: isPublic,
+      }).then((response) => {
+        if (response.id) {
+          setOpenEditGroupSection({ group: null, isOpen: false });
+          setUpdatedGroups((prev) => !prev);
+        } else {
+          if (typeof response.message === "string") {
+            setError([response.message]);
           } else {
-            if (typeof response.message === "string") {
-              setError([response.message]);
-            } else {
-              setError(response.message);
-            }
+            setError(response.message);
           }
         }
-      );
+      });
     } else {
-      post("group", { name: name, public: isPublic  }).then((response) => {
+      post("group", { name: name, public: isPublic }).then((response) => {
         if (response.id) {
           setOpenEditGroupSection({ group: null, isOpen: false });
           setUpdatedGroups((prev) => !prev);
@@ -125,11 +152,72 @@ export default function EditGroup({
             <CloseIcon />
           </IconButton>
         </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Switch checked={isPublic} onChange={() => setIsPublic(!isPublic)} />}
-            label={isPublic ? "Public" : "Private"}
-          />
+        <Grid
+          container
+          mt={1}
+          mb={1}
+          spacing={2}
+          direction="row"
+          justifyContent="space-around"
+          alignItems="center"
+        >
+          <Grid item xs={6}>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={isPublic}
+                  onChange={() => setIsPublic(!isPublic)}
+                />
+              }
+              label={isPublic ? "Public" : "Private"}
+            />
+          </Grid>
+
+          <Grid item xs={6}>
+            {isPublic ? (
+              <ClickAwayListener onClickAway={handleTooltipClose}>
+                <Paper
+                  elevation={3}
+                  component="form"
+                  sx={{
+                    p: "2px 4px",
+                    display: "flex",
+                    alignItems: "center",
+                    width: "75%",
+                  }}
+                >
+                  <LinkIcon />
+                  <InputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    value={
+                      window.location.href.replace("dashboard", "shared/") +
+                      openEditGroupSection?.group?.id
+                    }
+                  />
+                  <Tooltip
+                    PopperProps={{
+                      disablePortal: true,
+                    }}
+                    onClose={handleTooltipClose}
+                    open={open}
+                    disableFocusListener
+                    disableHoverListener
+                    disableTouchListener
+                    title="Copied!"
+                  >
+                    <IconButton
+                      type="button"
+                      sx={{ p: "10px" }}
+                      aria-label="copy"
+                      onClick={copyToClipboard}
+                    >
+                      <ContentPasteIcon />
+                    </IconButton>
+                  </Tooltip>
+                </Paper>
+              </ClickAwayListener>
+            ) : null}
+          </Grid>
         </Grid>
       </Grid>
     </Box>

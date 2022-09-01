@@ -1,5 +1,7 @@
 import React from "react";
 import { Container, Box } from "@mui/system";
+import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
 import HeaderComponent from "../../components/Header";
 import StoresComponent from "../../components/Stores";
 import FeaturedPost from "../../components/FeaturedPost";
@@ -17,9 +19,13 @@ const featuredPost = {
 export default function Landing() {
   return (
     <Container maxWidth={"xl"}>
-      <Box sx={{ minHeight: '100vh' }}>
+      <Box sx={{ minHeight: "100vh" }}>
         <HeaderComponent />
         <StoresComponent />
+        <Typography variant="h6" gutterBottom style={{ marginTop: 50 }}>
+          Featured Post
+        </Typography>
+        <Divider />
         <FeaturedPost post={featuredPost} />
       </Box>
     </Container>

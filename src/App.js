@@ -8,6 +8,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import routes from "./routes/routes";
 import AppBarComponent from "./components/AppBar";
 import FooterComponent from "./components/Footer";
+import "./App.css";
 
 const theme = createTheme({
   palette: {
@@ -26,6 +27,7 @@ const LandingPage = lazy(() => import("./pages/Landing"));
 const NotFoundPage = lazy(() => import("./pages/NotFound"));
 const NewsPage = lazy(() => import("./pages/News"));
 const NewsItemPage = lazy(() => import("./pages/NewsItem"));
+const SharedGroupPage = lazy(() => import("./pages/SharedGroup"));
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => {
@@ -38,6 +40,7 @@ function App() {
         <AppBarComponent isAuthenticated={isAuthenticated} user={user} />
         <Suspense fallback={"loading..."}>
           <Routes>
+            <Route path="/shared/:id" element={<SharedGroupPage />} />
             <Route
               path="/"
               element={<PublicRoute isAuthenticated={isAuthenticated} />}

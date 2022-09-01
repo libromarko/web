@@ -70,15 +70,7 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img
-            src={logo}
-            alt="libromarko"
-            style={{
-              maxWidth: "80px",
-
-              marginRight: "10px",
-            }}
-          />
+          <img src={logo} alt="libromarko" className="App-logo" />
           <Typography
             variant="h6"
             noWrap

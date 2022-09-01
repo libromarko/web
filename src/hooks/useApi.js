@@ -34,7 +34,6 @@ export const useApi = (token) => {
 
     return axios(url, options)
       .then((response) => {
-        console.log("custom fetch", response.data);
         return response.data;
       })
       .catch((error) => {

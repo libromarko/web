@@ -70,17 +70,19 @@ export default function Group({
             key={group.id}
             secondaryAction={
               <>
-                <IconButton
-                  aria-label="settings"
-                  onClick={() =>
-                    setOpenEditGroupSection({
-                      group: group,
-                      isOpen: true,
-                    })
-                  }
-                >
-                  <SettingsIcon />
-                </IconButton>
+                {group.name !== "inbox" ? (
+                  <IconButton
+                    aria-label="settings"
+                    onClick={() =>
+                      setOpenEditGroupSection({
+                        group: group,
+                        isOpen: true,
+                      })
+                    }
+                  >
+                    <SettingsIcon />
+                  </IconButton>
+                ) : null}
                 <IconButton
                   style={{
                     transform:

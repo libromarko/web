@@ -4,7 +4,7 @@ import { Grid, Typography, Paper, Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typed from "react-typed";
 import { useNavigate } from "react-router-dom";
-import landingImage from "./undraw_Online_organizer_re_156n.png";
+import landingImage from "./absurd-design-Chapter1-33.png";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
@@ -31,6 +31,12 @@ export default function Header() {
             <Item elevation={0}>
               <Typography variant="h3" component="h3">
                 Access your bookmarks from{" "}
+              </Typography>
+            </Item>
+          </Grid>
+          <Grid item xs={12}>
+            <Item elevation={0}>
+              <Typography variant="h3" component="h3">
                 <span style={{ backgroundColor: "#9575cd", color: "white" }}>
                   &nbsp;
                   <Typed
@@ -57,7 +63,7 @@ export default function Header() {
           </Grid>
         </Grid>
         <Grid item xs>
-          <img src={landingImage} alt="libromarko" />
+          <img src={landingImage} alt="libromarko" width={750} />
         </Grid>
       </Grid>
     </Box>

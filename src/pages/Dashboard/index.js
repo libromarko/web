@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Container, Box } from "@mui/material";
 import Group from "../../components/Group";
 import Bookmark from "../../components/Bookmark";
 import EditGroup from "../../components/EditGroup";
 import EditBookmark from "../../components/EditBookmark";
+import ActivationAlert from "../../components/ActivationAlert";
+import { useApi } from "../../hooks/useApi";
 
 export default function Dashboard() {
+  const { get } = useApi();
+
+  const [isActive, setIsActive] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [updatedGroups, setUpdatedGroups] = useState(false);
   const [updatedBookmarks, setUpdatedBookmarks] = useState(false);
@@ -18,8 +23,15 @@ export default function Dashboard() {
     bookmark: null,
   });
 
+  useEffect(() => {
+    get("activation/user").then((response) => {
+      setIsActive(response.isActive);
+    });
+  }, [get]);
+
   return (
     <Container maxWidth="xl" style={{ minHeight: "100vh" }}>
+      {!isActive && <ActivationAlert />}
       <Box sx={{ flexGrow: 1, mt: 10, mb: 10 }}>
         <Grid container spacing={2}>
           <Grid item xs={6}>

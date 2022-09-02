@@ -1,7 +1,7 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import notFoundImage from "./undraw_Page_not_found_re_e9o6.png";
 
 export default function NotFound() {
   return (
@@ -14,9 +14,7 @@ export default function NotFound() {
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h1">
-          404
-        </Typography>
+        <img src={notFoundImage} alt="Not Found" />
       </Box>
     </Container>
   );

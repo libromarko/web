@@ -29,6 +29,7 @@ const NewsPage = lazy(() => import("./pages/News"));
 const NewsItemPage = lazy(() => import("./pages/NewsItem"));
 const SharedGroupPage = lazy(() => import("./pages/SharedGroup"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicy"));
+const ActivationPage = lazy(() => import("./pages/Activation"));
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => {
@@ -43,6 +44,7 @@ function App() {
           <Routes>
             <Route path="/shared/:id" element={<SharedGroupPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/activation/:id" element={<ActivationPage />} />
             <Route
               path="/"
               element={<PublicRoute isAuthenticated={isAuthenticated} />}

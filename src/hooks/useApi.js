@@ -37,7 +37,7 @@ export const useApi = (token) => {
         return response.data;
       })
       .catch((error) => {
-        if (error?.response?.data.statusCode === 401) {
+        if (error?.response?.data.statusCode === 401 || error?.response?.data.statusCode === 500 ) {
           dispatch(logout());
         }
 

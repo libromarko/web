@@ -11,14 +11,12 @@ import {
   ListItemButton,
   ListItemIcon,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
 import FolderIcon from "@mui/icons-material/Folder";
 import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useApi } from "../../hooks/useApi";
 import ListItemLoader from "../Loader/ListItemLoader";
-import { logout } from "../../store/services/auth.service";
 
 export default function Group({
   selectedGroup,
@@ -27,7 +25,6 @@ export default function Group({
   updatedGroups,
 }) {
   const { get } = useApi();
-  const dispatch = useDispatch();
 
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,9 +35,6 @@ export default function Group({
 
   const fetchGroups = () => {
     get("group/user").then((response) => {
-      if (response.statusCode === 500) {
-        dispatch(logout());
-      }
       setGroups(response);
       setIsLoading(false);
     });

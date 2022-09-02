@@ -8,6 +8,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import routes from "./routes/routes";
 import AppBarComponent from "./components/AppBar";
 import FooterComponent from "./components/Footer";
+import BackdropLoading from "./components/BackdropLoading";
 import "./App.css";
 
 const theme = createTheme({
@@ -39,8 +40,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <AppBarComponent isAuthenticated={isAuthenticated} user={user} />
-        <Suspense fallback={"loading..."}>
+        <Suspense fallback={<BackdropLoading />}>
+          <AppBarComponent isAuthenticated={isAuthenticated} user={user} />
           <Routes>
             <Route path="/shared/:id" element={<SharedGroupPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
@@ -70,8 +71,8 @@ function App() {
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
+          <FooterComponent />
         </Suspense>
-        <FooterComponent />
       </Router>
     </ThemeProvider>
   );

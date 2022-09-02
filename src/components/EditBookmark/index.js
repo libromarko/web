@@ -138,7 +138,7 @@ export default function EditBookmark({
         </Grid>
         <Grid item xs={4}>
           <Button
-            disabled={url.length <= 0 || description.length <= 0}
+            disabled={url.length <= 0}
             variant="outlined"
             startIcon={<SaveIcon />}
             onClick={() => handleSave()}

@@ -16,7 +16,10 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/services/auth.service";
 import logo from "./logo.png";
 
-const pages = ["News"];
+const pages = [
+  { auth: false, name: "News" },
+  { auth: true, name: "Dashboard" },
+];
 const settings = ["Account", "Dashboard", "Logout"];
 
 const AppBarComponent = ({ isAuthenticated, user }) => {
@@ -38,7 +41,9 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
       case "News":
         navigate("/news", { replace: true });
         break;
-
+      case "Dashboard":
+        navigate("/dashboard", { replace: true });
+        break;
       default:
         break;
     }
@@ -118,12 +123,16 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {!isAuthenticated &&
-                pages.map((page) => (
-                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                    <Typography textAlign="center">{page}</Typography>
+              {pages.map((page) =>
+                isAuthenticated === page.auth ? (
+                  <MenuItem
+                    key={page}
+                    onClick={() => handleCloseNavMenu(page.name)}
+                  >
+                    <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
-                ))}
+                ) : null
+              )}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -146,16 +155,17 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {!isAuthenticated &&
-              pages.map((page) => (
+            {pages.map((page) =>
+              isAuthenticated === page.auth ? (
                 <Button
                   key={page}
-                  onClick={() => handleCloseNavMenu(page)}
+                  onClick={() => handleCloseNavMenu(page.name)}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  {page}
+                  {page.name}
                 </Button>
-              ))}
+              ) : null
+            )}
           </Box>
           {isAuthenticated ? (
             <Box sx={{ flexGrow: 0 }}>

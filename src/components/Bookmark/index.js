@@ -86,7 +86,7 @@ export default function Bookmark({
               <ListItemText
                 primary={
                   bookmark.description
-                    ? bookmark.description
+                    ? bookmark.description.slice(0, 50) + "..."
                     : "Doesn't have a description."
                 }
                 secondary={

@@ -14,7 +14,7 @@ const stores = [
 //  },
   {
     name: "Firefox Add-ons",
-    href: "#",
+    href: "https://addons.mozilla.org/en-US/firefox/addon/libromarko/",
     imagePath: "/stores/webstore-firefox.svg",
   },
 ];
@@ -26,7 +26,7 @@ export default function Stores() {
       <Grid container spacing={2}>
         {stores.map((store, i) => (
           <Grid key={i} item xs={12 / stores.length} style={{ textAlign: 'center'}}>
-            <Link href={store.href}>
+            <Link href={store.href} target='_blank'>
               <img
                 width={340}
                 height={96}

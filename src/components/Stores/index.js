@@ -4,7 +4,7 @@ import { Grid, Box, Link } from "@mui/material";
 const stores = [
   {
     name: "Chrome Web Store",
-    href: "#",
+    href: "https://chrome.google.com/webstore/detail/libromarko/jpbjepefiibjgekgaloekkfbjciigcfg",
     imagePath: "/stores/webstore-chrome.png",
   },
 //  {

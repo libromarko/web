@@ -30,6 +30,7 @@ const NewsPage = lazy(() => import("./pages/News"));
 const NewsItemPage = lazy(() => import("./pages/NewsItem"));
 const SharedGroupPage = lazy(() => import("./pages/SharedGroup"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicy"));
+const AppPrivacyPolicyPage = lazy(() => import("./pages/AppPrivacyPolicy")); 
 const ActivationPage = lazy(() => import("./pages/Activation"));
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Routes>
             <Route path="/shared/:id" element={<SharedGroupPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/app-privacy-policy" element={<AppPrivacyPolicyPage />} />
             <Route path="/activation/:id" element={<ActivationPage />} />
             <Route
               path="/"

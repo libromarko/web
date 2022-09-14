@@ -88,7 +88,7 @@ export default function PrivacyPolicy() {
               <strong>Website</strong> refers to libromarko, accessible from{" "}
               <a
                 href="https://libromarko.xyz"
-                rel="external nofollow noopener"
+                rel="external nofollow noopener noreferrer"
                 target="_blank"
               >
                 https://libromarko.xyz
@@ -169,7 +169,7 @@ export default function PrivacyPolicy() {
             disabling, or deleting local shared objects?&quot; available at{" "}
             <a
               href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"
-              rel="external nofollow noopener"
+              rel="external nofollow noopener noreferrer"
               target="_blank"
             >
               https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_

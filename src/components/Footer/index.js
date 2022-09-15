@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Link, Grid, Box } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
 
 export default function Footer({ props }) {
   return (
@@ -43,7 +44,7 @@ export default function Footer({ props }) {
             {process.env.REACT_APP_VERSION}
           </Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid xs={4} direction="row">
           <Typography
             variant="h6"
             color="text.secondary"
@@ -53,12 +54,41 @@ export default function Footer({ props }) {
             <Link
               color="inherit"
               href="https://github.com/libromarko"
-              target={"_blank"}
+              target="_blank"
             >
               <GitHubIcon />
             </Link>
           </Typography>
         </Grid>
+      </Grid>
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Typography
+          variant="h6"
+          color="text.secondary"
+          align="center"
+          {...props}
+        >
+          <Link
+            color="inherit"
+            href="https://status.libromarko.xyz/status/libromarko"
+            target="_blank"
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <MonitorHeartIcon /> <span>{"Status"}</span>
+            </div>
+          </Link>
+        </Typography>
       </Grid>
     </Box>
   );

@@ -18,7 +18,7 @@ When using the application, remember that this is an alpha version and you may e
 You will definitely encounter errors while using the application, do not hesitate to tell us about them.
 We will be with you again very soon with new announcements.
 
-Thanks for your help. Enjoyable uses. 🫶
+Thanks for your help. Enjoyable uses. 🎉
 
 ✉️ [Contact Us](mailto:info@libromarko.xyz)
 `,

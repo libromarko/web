@@ -4,7 +4,7 @@ import { Grid, Typography, Paper, Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typed from "react-typed";
 import { useNavigate } from "react-router-dom";
-import landingImage from "./absurd-design-Chapter1-33.png";
+import landingImage from "./undraw_Bookmarks_re_mq1u.png";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",

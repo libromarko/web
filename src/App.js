@@ -27,8 +27,6 @@ const LoginPage = lazy(() => import("./pages/Login"));
 const SignupPage = lazy(() => import("./pages/Signup"));
 const LandingPage = lazy(() => import("./pages/Landing"));
 const NotFoundPage = lazy(() => import("./pages/NotFound"));
-const NewsPage = lazy(() => import("./pages/News"));
-const NewsItemPage = lazy(() => import("./pages/NewsItem"));
 const SharedGroupPage = lazy(() => import("./pages/SharedGroup"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicy"));
 const AppPrivacyPolicyPage = lazy(() => import("./pages/AppPrivacyPolicy"));
@@ -60,8 +58,6 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
-              <Route path="/news" element={<NewsPage />} />
-              <Route path="/news/:newsId" element={<NewsItemPage />} />
             </Route>
             <Route
               path="/"

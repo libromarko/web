@@ -38,7 +38,7 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
   const handleCloseNavMenu = (page) => {
     switch (page) {
       case "News":
-        navigate("/news", { replace: true });
+        window.open('https://blog.libromarko.xyz', '_blank');
         break;
       case "Dashboard":
         navigate("/dashboard", { replace: true });
@@ -134,25 +134,7 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
               )}
             </Menu>
           </Box>
-          
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) =>
               isAuthenticated === page.auth ? (

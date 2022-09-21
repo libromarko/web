@@ -16,7 +16,7 @@ import { logout } from "../../store/services/auth.service";
 import logo from "./logo.png";
 
 const pages = [
-  { auth: false, name: "Doc" },
+  { auth: false, name: "Documentation" },
   { auth: false, name: "Blog" },
   { auth: true, name: "Dashboard" },
 ];
@@ -41,7 +41,7 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
       case "Blog":
         window.open('https://doc.libromarko.xyz/blog', '_blank');
         break;
-        case "Doc":
+        case "Documentation":
           window.open('https://doc.libromarko.xyz', '_blank');
           break;
       case "Dashboard":

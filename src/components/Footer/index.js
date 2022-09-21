@@ -59,6 +59,34 @@ export default function Footer({ props }) {
               <GitHubIcon />
             </Link>
           </Typography>
+          <Typography
+            variant="h6"
+            color="text.secondary"
+            align="center"
+            {...props}
+          >
+            <Link
+              color="inherit"
+              href="https://doc.libromarko.xyz"
+              target="_blank"
+            >
+              Documentation
+            </Link>
+          </Typography>
+          <Typography
+            variant="h6"
+            color="text.secondary"
+            align="center"
+            {...props}
+          >
+            <Link
+              color="inherit"
+              href="https://doc.libromarko.xyz/blog"
+              target="_blank"
+            >
+              Blog
+            </Link>
+          </Typography>
         </Grid>
       </Grid>
       <Grid

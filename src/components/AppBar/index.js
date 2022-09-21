@@ -16,7 +16,8 @@ import { logout } from "../../store/services/auth.service";
 import logo from "./logo.png";
 
 const pages = [
-  { auth: false, name: "News" },
+  { auth: false, name: "Doc" },
+  { auth: false, name: "Blog" },
   { auth: true, name: "Dashboard" },
 ];
 const settings = ["Account", "Dashboard", "Logout"];
@@ -37,9 +38,12 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
 
   const handleCloseNavMenu = (page) => {
     switch (page) {
-      case "News":
-        window.open('https://blog.libromarko.xyz', '_blank');
+      case "Blog":
+        window.open('https://doc.libromarko.xyz', '_blank');
         break;
+        case "Doc":
+          window.open('https://doc.libromarko.xyz/blog', '_blank');
+          break;
       case "Dashboard":
         navigate("/dashboard", { replace: true });
         break;

@@ -7,11 +7,11 @@ const stores = [
     href: "https://chrome.google.com/webstore/detail/libromarko/jpbjepefiibjgekgaloekkfbjciigcfg",
     imagePath: "/stores/webstore-chrome.png",
   },
-//  {
-//    name: "Play Store",
-//    href: "#",
-//    imagePath: "/stores/google-play.svg",
-//  },
+  {
+    name: "Play Store",
+    href: "https://play.google.com/store/apps/details?id=xyz.libromarko.app",
+    imagePath: "/stores/google-play.svg",
+  },
   {
     name: "Firefox Add-ons",
     href: "https://addons.mozilla.org/en-US/firefox/addon/libromarko/",

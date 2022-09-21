@@ -39,10 +39,10 @@ const AppBarComponent = ({ isAuthenticated, user }) => {
   const handleCloseNavMenu = (page) => {
     switch (page) {
       case "Blog":
-        window.open('https://doc.libromarko.xyz', '_blank');
+        window.open('https://doc.libromarko.xyz/blog', '_blank');
         break;
         case "Doc":
-          window.open('https://doc.libromarko.xyz/blog', '_blank');
+          window.open('https://doc.libromarko.xyz', '_blank');
           break;
       case "Dashboard":
         navigate("/dashboard", { replace: true });

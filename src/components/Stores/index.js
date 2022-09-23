@@ -21,12 +21,16 @@ const stores = [
 
 export default function Stores() {
   return (
-    <Box sx={{ flexGrow: 1 }} alignItems="center"
-    justifyContent="center" >
+    <Box sx={{ flexGrow: 1 }} alignItems="center" justifyContent="center">
       <Grid container spacing={2}>
         {stores.map((store, i) => (
-          <Grid key={i} item xs={12 / stores.length} style={{ textAlign: 'center'}}>
-            <Link href={store.href} target='_blank'>
+          <Grid
+            key={i}
+            item
+            md={12 / stores.length}
+            style={{ textAlign: "center" }}
+          >
+            <Link href={store.href} target="_blank">
               <img
                 width={340}
                 height={96}

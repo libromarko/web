@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <Box sx={{ flexGrow: 1, mt: 10, mb: 10 }}>
       <Grid container spacing={1} alignItems="center">
-        <Grid item xs>
+        <Grid item md>
           <Grid item xs={12}>
             <Item elevation={0}>
               <Typography variant="h2" component="h2">
@@ -62,8 +62,8 @@ export default function Header() {
             </Item>
           </Grid>
         </Grid>
-        <Grid item xs>
-          <img src={landingImage} alt="libromarko" width={750} />
+        <Grid item md>
+          <img src={landingImage} alt="libromarko" width={"100%"} />
         </Grid>
       </Grid>
     </Box>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Typography, Link, Grid, Box } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
 
 export default function Footer({ props }) {
   return (
@@ -15,7 +14,7 @@ export default function Footer({ props }) {
       }}
     >
       <Grid container>
-        <Grid item xs={4}>
+        <Grid item md={4}>
           <Typography
             variant="h6"
             color="text.secondary"
@@ -29,7 +28,7 @@ export default function Footer({ props }) {
             </Link>
           </Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item md={4}>
           <Typography
             variant="h6"
             color="text.secondary"
@@ -44,7 +43,7 @@ export default function Footer({ props }) {
             {process.env.REACT_APP_VERSION}
           </Typography>
         </Grid>
-        <Grid xs={4} direction="row">
+        <Grid md={4} direction="row">
           <Typography
             variant="h6"
             color="text.secondary"
@@ -87,6 +86,20 @@ export default function Footer({ props }) {
               Blog
             </Link>
           </Typography>
+          <Typography
+            variant="h6"
+            color="text.secondary"
+            align="center"
+            {...props}
+          >
+            <Link
+              color="inherit"
+              href="https://status.libromarko.xyz/status/libromarko"
+              target="_blank"
+            >
+              {"Status"}
+            </Link>
+          </Typography>
         </Grid>
       </Grid>
       <Grid
@@ -94,30 +107,7 @@ export default function Footer({ props }) {
         direction="row"
         justifyContent="center"
         alignItems="center"
-      >
-        <Typography
-          variant="h6"
-          color="text.secondary"
-          align="center"
-          {...props}
-        >
-          <Link
-            color="inherit"
-            href="https://status.libromarko.xyz/status/libromarko"
-            target="_blank"
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-              }}
-            >
-              <MonitorHeartIcon /> <span>{"Status"}</span>
-            </div>
-          </Link>
-        </Typography>
-      </Grid>
+      ></Grid>
     </Box>
   );
 }

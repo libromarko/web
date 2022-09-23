@@ -42,8 +42,22 @@ export default function Footer({ props }) {
             {" - v: "}
             {process.env.REACT_APP_VERSION}
           </Typography>
+          <Typography
+            variant="h6"
+            color="text.secondary"
+            align="center"
+            {...props}
+          >
+            <Link
+              color="inherit"
+              href="https://status.libromarko.xyz/status/libromarko"
+              target="_blank"
+            >
+              {"Status"}
+            </Link>
+          </Typography>
         </Grid>
-        <Grid md={4} direction="row">
+        <Grid md={4}>
           <Typography
             variant="h6"
             color="text.secondary"
@@ -86,20 +100,7 @@ export default function Footer({ props }) {
               Blog
             </Link>
           </Typography>
-          <Typography
-            variant="h6"
-            color="text.secondary"
-            align="center"
-            {...props}
-          >
-            <Link
-              color="inherit"
-              href="https://status.libromarko.xyz/status/libromarko"
-              target="_blank"
-            >
-              {"Status"}
-            </Link>
-          </Typography>
+          
         </Grid>
       </Grid>
       <Grid

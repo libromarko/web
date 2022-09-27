@@ -21,7 +21,7 @@ const stores = [
 
 export default function Stores() {
   return (
-    <Box sx={{ flexGrow: 1 }} alignItems="center" justifyContent="center">
+    <Box sx={{ flexGrow: 1, mt: 10, mb: 10 }} alignItems="center" justifyContent="center">
       <Grid container spacing={2}>
         {stores.map((store, i) => (
           <Grid

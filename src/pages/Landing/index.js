@@ -6,12 +6,12 @@ import Feature from "../../components/Feature";
 
 export default function Landing() {
   return (
-    <Container maxWidth={"xl"}>
-      <Box sx={{ minHeight: "100vh" }}>
+    <Box sx={{ minHeight: "100vh" }}>
+      <Container maxWidth={"xl"}>
         <HeaderComponent />
-        <Feature />
         <StoresComponent />
-      </Box>
-    </Container>
+      </Container>
+      <Feature />
+    </Box>
   );
 }

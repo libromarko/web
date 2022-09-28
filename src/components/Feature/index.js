@@ -3,11 +3,12 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import FeatureCard from "../FeatureCard";
+import "./feature.css";
 
 export default function Feature() {
   return (
     <React.Fragment>
-      <Box sx={{ bgcolor: "#9575cd" }}>
+      <Box className="box-bg" sx={{ pb: 10 }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
             fill="#ffffff"
@@ -21,6 +22,7 @@ export default function Feature() {
             direction="row"
             justifyContent="flex-start"
             alignItems="center"
+            sx={{ mb: 10 }}
           >
             <FeatureCard />
           </Grid>
@@ -29,6 +31,7 @@ export default function Feature() {
             direction="row"
             justifyContent="center"
             alignItems="center"
+            sx={{ mb: 10 }}
           >
             <FeatureCard />
           </Grid>
@@ -42,13 +45,6 @@ export default function Feature() {
           </Grid>
         </Container>
       </Box>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#9575cd"
-          fill-opacity="1"
-          d="M0,32L30,58.7C60,85,120,139,180,181.3C240,224,300,256,360,245.3C420,235,480,181,540,170.7C600,160,660,192,720,213.3C780,235,840,245,900,256C960,267,1020,277,1080,266.7C1140,256,1200,224,1260,213.3C1320,203,1380,213,1410,218.7L1440,224L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"
-        ></path>
-      </svg>
     </React.Fragment>
   );
 }

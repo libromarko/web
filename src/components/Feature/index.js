@@ -1,9 +1,38 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import FeatureCard from "../FeatureCard";
 import "./feature.css";
+import inSyncImage from "./img/undraw_in_sync_re_jlqd.svg";
+import webDevice from "./img/undraw_web_devices_re_m8sc.svg";
+import openSource from "./img/undraw_open_source_-1-qxw.svg";
+
+const features = [
+  {
+    id: 1,
+    title: "Using multiple devices and multiple browsers?",
+    description: "desc",
+    img: inSyncImage,
+    grid: "flex-start",
+    learnMore: '#'
+  },
+  {
+    id: 2,
+    title: "Using multiple devices and multiple browsers?",
+    description: "desc",
+    img: webDevice,
+    grid: "center",
+    learnMore: '#'
+  },
+  {
+    id: 3,
+    title: "Using multiple devices and multiple browsers?",
+    description: "desc",
+    img: openSource,
+    grid: "flex-end",
+    learnMore: '#'
+  },
+];
 
 export default function Feature() {
   return (
@@ -17,32 +46,9 @@ export default function Feature() {
           ></path>
         </svg>
         <Container maxWidth="xl">
-          <Grid
-            container
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            sx={{ mb: 10 }}
-          >
-            <FeatureCard />
-          </Grid>
-          <Grid
-            container
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            sx={{ mb: 10 }}
-          >
-            <FeatureCard />
-          </Grid>
-          <Grid
-            container
-            direction="row"
-            justifyContent="flex-end"
-            alignItems="center"
-          >
-            <FeatureCard />
-          </Grid>
+          {features.map((cardItem) => (
+            <FeatureCard key={cardItem.id} cardItem={cardItem} />
+          ))}
         </Container>
       </Box>
     </React.Fragment>

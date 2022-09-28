@@ -5,36 +5,45 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import devicesImage from "./undraw_devices_re_dxae.svg";
+import Grid from "@mui/material/Grid";
 
-export default function FeatureCard() {
+export default function FeatureCard({ cardItem }) {
   return (
-    <Card sx={{ display: "flex" }}>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <CardContent sx={{ flex: "1 0 auto", width: 300 }}>
-          <Typography component="div" variant="h5">
-            Using multiple devices and multiple browsers?
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            color="text.secondary"
-            component="div"
-          >
-            Mac Miller
-          </Typography>
-        </CardContent>
-        <Box sx={{ display: "flex", pl: 1, pb: 1 }}>
-          <Button size="small" color="primary">
-            Learn more
-          </Button>
+    <Grid
+      container
+      direction="row"
+      justifyContent={cardItem.grid}
+      alignItems="center"
+      sx={{ mb: 10 }}
+      key={cardItem.id}
+    >
+      <Card sx={{ display: "flex", backgroundColor: '#EDE7F6' }} elevation={3}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <CardContent sx={{ flex: "1 0 auto", width: 300 }}>
+            <Typography component="div" variant="h5">
+              {cardItem.title}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              component="div"
+            >
+              {cardItem.description}
+            </Typography>
+          </CardContent>
+          <Box sx={{ display: "flex", pl: 1, pb: 1 }}>
+            <Button size="small" color="primary">
+              Learn more
+            </Button>
+          </Box>
         </Box>
-      </Box>
-      <CardMedia
-        component="img"
-        sx={{ width: "100%", height: 350 }}
-        image={devicesImage}
-        alt="Live from space album cover"
-      />
-    </Card>
+        <CardMedia
+          component="img"
+          sx={{ width: "100%", height: 350 }}
+          image={cardItem.img}
+          alt={cardItem.title}
+        />
+      </Card>
+    </Grid>
   );
 }

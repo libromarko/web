@@ -39,7 +39,7 @@ export default function FeatureCard({ cardItem }) {
         </Box>
         <CardMedia
           component="img"
-          sx={{ width: "100%", height: 350 }}
+          sx={{ maxWidth: "100%", height: 350, padding: 3 }}
           image={cardItem.img}
           alt={cardItem.title}
         />

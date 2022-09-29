@@ -14,7 +14,7 @@ const features = [
     description: "You can add various bookmarks, you can even edit them in groups!",
     img: inSyncImage,
     grid: "flex-start",
-    learnMore: '#'
+    learnMore: 'https://doc.libromarko.xyz/docs/category/how-to-use---web'
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const features = [
     description: "You can open your bookmarks and groups in different devices and browser easily!",
     img: webDevice,
     grid: "flex-end",
-    learnMore: '#'
+    learnMore: 'https://doc.libromarko.xyz/docs/intro'
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const features = [
     description: "desc",
     img: openSource,
     grid: "flex-start",
-    learnMore: '#'
+    learnMore: 'https://github.com/libromarko'
   },
 ];
 

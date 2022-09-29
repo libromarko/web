@@ -3,9 +3,9 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import Link from '@mui/material/Link';
 
 export default function FeatureCard({ cardItem }) {
   return (
@@ -28,9 +28,9 @@ export default function FeatureCard({ cardItem }) {
             </Typography>
           </CardContent>
           <Box sx={{ display: "flex", pl: 1, pb: 1, pt: 5 }}>
-            <Button size="small" color="primary">
+            <Link size="small" underline="none" color="primary" href={cardItem.learnMore} target="_blank">
               Learn more
-            </Button>
+            </Link>
           </Box>
         </Box>
         <CardMedia

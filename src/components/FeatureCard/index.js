@@ -17,21 +17,17 @@ export default function FeatureCard({ cardItem }) {
       sx={{ mb: 10 }}
       key={cardItem.id}
     >
-      <Card sx={{ display: "flex", backgroundColor: '#EDE7F6' }} elevation={3}>
+      <Card sx={{ display: "flex", backgroundColor: "#EDE7F6" }} elevation={3}>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <CardContent sx={{ flex: "1 0 auto", width: 300 }}>
             <Typography component="div" variant="h5">
               {cardItem.title}
             </Typography>
-            <Typography
-              variant="h6"
-              color="text.secondary"
-              component="div"
-            >
+            <Typography variant="h6" color="text.secondary" component="div">
               {cardItem.description}
             </Typography>
           </CardContent>
-          <Box sx={{ display: "flex", pl: 1, pb: 1 }}>
+          <Box sx={{ display: "flex", pl: 1, pb: 1, pt: 5 }}>
             <Button size="small" color="primary">
               Learn more
             </Button>

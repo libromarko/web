@@ -21,7 +21,7 @@ const features = [
     title: "Using different devices and browser?",
     description: "You can open your bookmarks and groups in different devices and browser easily!",
     img: webDevice,
-    grid: "center",
+    grid: "flex-end",
     learnMore: '#'
   },
   {
@@ -29,7 +29,7 @@ const features = [
     title: "Completely open source.",
     description: "desc",
     img: openSource,
-    grid: "flex-end",
+    grid: "flex-start",
     learnMore: '#'
   },
 ];

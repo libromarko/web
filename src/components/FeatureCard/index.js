@@ -24,7 +24,7 @@ export default function FeatureCard({ cardItem }) {
               {cardItem.title}
             </Typography>
             <Typography
-              variant="subtitle1"
+              variant="h6"
               color="text.secondary"
               component="div"
             >

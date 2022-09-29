@@ -10,16 +10,16 @@ import openSource from "./img/undraw_open_source_-1-qxw.svg";
 const features = [
   {
     id: 1,
-    title: "Using multiple devices and multiple browsers?",
-    description: "desc",
+    title: "Using bookmarks?",
+    description: "You can add various bookmarks, you can even edit them in groups!",
     img: inSyncImage,
     grid: "flex-start",
     learnMore: '#'
   },
   {
     id: 2,
-    title: "Using multiple devices and multiple browsers?",
-    description: "desc",
+    title: "Using different devices and browser?",
+    description: "You can open your bookmarks and groups in different devices and browser easily!",
     img: webDevice,
     grid: "center",
     learnMore: '#'

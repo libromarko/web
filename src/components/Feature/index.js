@@ -27,7 +27,7 @@ const features = [
   {
     id: 3,
     title: "Completely open source.",
-    description: "Libromarko is completely open source. Let's develop together.",
+    description: "Libromarko is completely open source. You can start contributing right away.",
     img: openSource,
     grid: "space-between",
     learnMore: 'https://github.com/libromarko'

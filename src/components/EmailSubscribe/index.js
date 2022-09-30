@@ -66,7 +66,7 @@ export default function EmailSubscribe() {
         )}
         <CardActions className="cardAction">
           <Button
-            disabled={!email && !firstName}
+            disabled={!email || !firstName}
             onClick={() => handleSubmit()}
             variant="contained"
           >

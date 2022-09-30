@@ -51,6 +51,7 @@ export default function EmailSubscribe() {
             sx={{ mt: 1, mb: 1 }}
             id="outlined-basic"
             label="Email"
+            type="email"
             variant="outlined"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}

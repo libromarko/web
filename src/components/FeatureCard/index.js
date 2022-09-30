@@ -5,7 +5,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Link from '@mui/material/Link';
+import Link from "@mui/material/Link";
+import EmailSubscribe from "../EmailSubscribe";
 
 export default function FeatureCard({ cardItem }) {
   return (
@@ -28,7 +29,13 @@ export default function FeatureCard({ cardItem }) {
             </Typography>
           </CardContent>
           <Box sx={{ display: "flex", pl: 1, pb: 1, pt: 5 }}>
-            <Link size="small" underline="none" color="primary" href={cardItem.learnMore} target="_blank">
+            <Link
+              size="small"
+              underline="none"
+              color="primary"
+              href={cardItem.learnMore}
+              target="_blank"
+            >
               Learn more
             </Link>
           </Box>
@@ -40,6 +47,7 @@ export default function FeatureCard({ cardItem }) {
           alt={cardItem.title}
         />
       </Card>
+      {cardItem.id === 3 && <EmailSubscribe />}
     </Grid>
   );
 }

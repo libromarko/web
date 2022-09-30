@@ -29,7 +29,7 @@ const features = [
     title: "Completely open source.",
     description: "Libromarko is completely open source. Let's develop together.",
     img: openSource,
-    grid: "flex-start",
+    grid: "space-between",
     learnMore: 'https://github.com/libromarko'
   },
 ];

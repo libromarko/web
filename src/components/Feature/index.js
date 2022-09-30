@@ -5,14 +5,14 @@ import FeatureCard from "../FeatureCard";
 import "./feature.css";
 import inSyncImage from "./img/undraw_in_sync_re_jlqd.svg";
 import webDevice from "./img/undraw_web_devices_re_m8sc.svg";
-import openSource from "./img/undraw_open_source_-1-qxw.svg";
+import openSource from "./img/undraw_code_review_re_woeb.svg";
 
 const features = [
   {
     id: 1,
     title: "Using bookmarks?",
-    description: "You can add various bookmarks, you can even edit them in groups!",
-    img: inSyncImage,
+    description: "You can add various bookmarks and even organize and share them in groups!",
+    img: webDevice,
     grid: "flex-start",
     learnMore: 'https://doc.libromarko.xyz/docs/category/how-to-use---web'
   },
@@ -20,14 +20,14 @@ const features = [
     id: 2,
     title: "Using different devices and browser?",
     description: "You can open your bookmarks and groups in different devices and browser easily!",
-    img: webDevice,
+    img: inSyncImage,
     grid: "flex-end",
     learnMore: 'https://doc.libromarko.xyz/docs/intro'
   },
   {
     id: 3,
     title: "Completely open source.",
-    description: "desc",
+    description: "Libromarko is completely open source. Let's develop together.",
     img: openSource,
     grid: "flex-start",
     learnMore: 'https://github.com/libromarko'

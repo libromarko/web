@@ -5,11 +5,13 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Alert from "@mui/material/Alert";
 import "./email.css";
 
 export default function EmailSubscribe() {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
+  const [alert, setAlert] = useState({ content: null, message: "message" });
 
   const handleSubmit = () => {
     console.log(firstName, email);
@@ -53,16 +55,23 @@ export default function EmailSubscribe() {
             onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
+        {alert.content && (
+          <Alert severity={alert.content}>{alert.message}</Alert>
+        )}
+        <CardActions className="cardAction">
+          <Button
+            disabled={!email && !firstName}
+            onClick={() => handleSubmit()}
+            variant="contained"
+          >
+            Subscribe
+          </Button>
+        </CardActions>
         <Typography variant="body2" color="text.secondary">
-          We will send you an email only when new contents is posted.
-          Unsubscribe at any time.
+          We will send you an email only when new content is posted. Unsubscribe
+          at any time.
         </Typography>
       </CardContent>
-      <CardActions className="cardAction">
-        <Button disabled={!email && !firstName} onClick={() => handleSubmit()} size="small">
-          Subscribe
-        </Button>
-      </CardActions>
     </Card>
   );
 }

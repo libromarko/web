@@ -15,6 +15,7 @@ export default function EmailSubscribe() {
 
   const handleSubmit = () => {
     console.log(firstName, email);
+    setAlert({ content: "error", message: "Service is not active." });
   };
 
   return (
@@ -56,7 +57,12 @@ export default function EmailSubscribe() {
           />
         </div>
         {alert.content && (
-          <Alert severity={alert.content}>{alert.message}</Alert>
+          <Alert
+            onClose={() => setAlert({ content: null, message: null })}
+            severity={alert.content}
+          >
+            {alert.message}
+          </Alert>
         )}
         <CardActions className="cardAction">
           <Button

@@ -5,7 +5,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import MarkunreadMailboxIcon from "@mui/icons-material/MarkunreadMailbox";
 import "./email.css";
 
 export default function EmailSubscribe() {
@@ -26,9 +25,6 @@ export default function EmailSubscribe() {
           component="div"
         >
           Join the newsletter!
-        </Typography>
-        <Typography textAlign="center">
-          <MarkunreadMailboxIcon fontSize="large" />
         </Typography>
         <Typography textAlign="center" variant="body2" color="text.secondary">
           Subscirbe to get latest content by email.
@@ -62,8 +58,8 @@ export default function EmailSubscribe() {
           Unsubscribe at any time.
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button onClick={() => handleSubmit()} size="small">
+      <CardActions className="cardAction">
+        <Button disabled={!email && !firstName} onClick={() => handleSubmit()} size="small">
           Subscribe
         </Button>
       </CardActions>

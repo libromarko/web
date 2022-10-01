@@ -19,7 +19,7 @@ const features = [
   {
     id: 2,
     title: "Using different devices and browser?",
-    description: "You can open your bookmarks and groups in different devices and browser easily!",
+    description: "You can open your bookmarks and groups in different devices and browsers easily!",
     img: inSyncImage,
     grid: "flex-end",
     learnMore: 'https://doc.libromarko.xyz/docs/intro'
@@ -27,7 +27,7 @@ const features = [
   {
     id: 3,
     title: "Completely open source!",
-    description: "Libromarko is completely open source. You can start contributing right away.",
+    description: "You can start contributing right away.",
     img: openSource,
     grid: "space-between",
     learnMore: 'https://github.com/libromarko'

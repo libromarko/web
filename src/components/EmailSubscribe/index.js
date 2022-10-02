@@ -30,7 +30,7 @@ export default function EmailSubscribe() {
           Join the newsletter!
         </Typography>
         <Typography textAlign="center" variant="body2" color="text.secondary">
-          Subscirbe to get latest content by email.
+          Subscribe to get latest content by email.
         </Typography>
         <div
           style={{

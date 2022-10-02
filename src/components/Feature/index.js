@@ -11,18 +11,20 @@ const features = [
   {
     id: 1,
     title: "Using bookmarks?",
-    description: "You can add various bookmarks and even organize and share them in groups!",
+    description:
+      "You can add various bookmarks and even organize and edit them in groups!",
     img: webDevice,
     grid: "flex-start",
-    learnMore: 'https://doc.libromarko.xyz/docs/category/how-to-use---web'
+    learnMore: "https://doc.libromarko.xyz/docs/category/how-to-use---web",
   },
   {
     id: 2,
-    title: "Using different devices and browser?",
-    description: "You can open your bookmarks and groups in different devices and browsers easily!",
+    title: "Using different devices and browsers?",
+    description:
+      "You can open your bookmarks and groups in different devices and browsers easily!",
     img: inSyncImage,
     grid: "flex-end",
-    learnMore: 'https://doc.libromarko.xyz/docs/intro'
+    learnMore: "https://doc.libromarko.xyz/docs/intro",
   },
   {
     id: 3,
@@ -30,7 +32,7 @@ const features = [
     description: "You can start contributing right away.",
     img: openSource,
     grid: "space-between",
-    learnMore: 'https://github.com/libromarko'
+    learnMore: "https://github.com/libromarko",
   },
 ];
 

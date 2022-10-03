@@ -6,16 +6,44 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
+import { useApi } from "../../hooks/useApi";
 import "./email.css";
 
 export default function EmailSubscribe() {
+  const { post } = useApi();
+
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [alert, setAlert] = useState({ content: null, message: "message" });
 
   const handleSubmit = () => {
-    console.log(firstName, email);
-    setAlert({ content: "error", message: "Service is not active." });
+    const data = {
+      name: firstName,
+      email: email,
+    };
+
+    post("mail/subscription", data).then((response) => {
+      const { statusCode } = response;
+
+      if (statusCode === 400 || statusCode === 403) {
+        setAlert({
+          content: "error",
+          message: statusCode === 400 ? response.message[0] : response.message,
+        });
+      } else if (statusCode === 500 || statusCode === 404) {
+        setAlert({
+          content: "error",
+          message: "An error was encountered during the operation.",
+        });
+      } else {
+        setFirstName("");
+        setEmail("");
+        setAlert({
+          content: "success",
+          message: "Your mail subscription has been started.",
+        });
+      }
+    });
   };
 
   return (
@@ -44,8 +72,8 @@ export default function EmailSubscribe() {
             id="outlined-basic"
             label="First Name"
             variant="outlined"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
           />
           <TextField
             sx={{ mt: 1, mb: 1 }}
@@ -53,8 +81,8 @@ export default function EmailSubscribe() {
             label="Email"
             type="email"
             variant="outlined"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         {alert.content && (

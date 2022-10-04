@@ -40,12 +40,14 @@ export default function FeatureCard({ cardItem }) {
             </Link>
           </Box>
         </Box>
-        <CardMedia
-          component="img"
-          sx={{ Width: "100%", height: 350, padding: 3, objectFit: 'fill' }}
-          image={cardItem.img}
-          alt={cardItem.title}
-        />
+        <Box sx={{ display: "flex" }}>
+          <CardMedia
+            component="img"
+            sx={{ width: "100%", height: 350, padding: 3, objectFit: "fill" }}
+            image={cardItem.img}
+            alt={cardItem.title}
+          />
+        </Box>
       </Card>
       {cardItem.id === 3 && <EmailSubscribe />}
     </Grid>

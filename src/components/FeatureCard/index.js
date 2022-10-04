@@ -20,7 +20,7 @@ export default function FeatureCard({ cardItem }) {
     >
       <Card sx={{ display: "flex", backgroundColor: "#EDE7F6" }} elevation={3}>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <CardContent sx={{ flex: "1 0 auto", width: 300 }}>
+          <CardContent sx={{ flex: "1 0 auto", maxWidth: 300 }}>
             <Typography component="div" variant="h5">
               {cardItem.title}
             </Typography>
@@ -42,7 +42,7 @@ export default function FeatureCard({ cardItem }) {
         </Box>
         <CardMedia
           component="img"
-          sx={{ maxWidth: "100%", height: 350, padding: 3 }}
+          sx={{ Width: "100%", height: 350, padding: 3, objectFit: 'fill' }}
           image={cardItem.img}
           alt={cardItem.title}
         />

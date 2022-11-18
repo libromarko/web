@@ -11,7 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const sequence = ["browser.", "mobile.", "everywhere."];
+const sequence = ["browsers.", "mobile.", "everywhere."];
 
 export default function Header() {
   let navigate = useNavigate();

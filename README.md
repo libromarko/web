@@ -1,5 +1,6 @@
 # libromarko Web Application
 
+**Note: This project is no longer actively maintained.**
 
 ## .env
 
